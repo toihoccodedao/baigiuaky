@@ -1,0 +1,50 @@
+﻿@model WebApplication4.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Xóa Sinh Viên";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <!-- Card Header -->
+        <div class="card-header bg-danger text-white text-center">
+            <h3 class="mb-0">Xác Nhận Xóa Sinh Viên</h3>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+            <p class="text-center text-danger mb-4 fs-5">
+                <i class="bi bi-exclamation-triangle-fill"></i> Bạn có chắc chắn muốn xóa sinh viên này không?
+            </p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <dl class="row">
+                        <dt class="col-sm-4 fw-bold">Mã Sinh Viên:</dt>
+                        <dd class="col-sm-8">@Model.MaSV</dd>
+
+                        <dt class="col-sm-4 fw-bold">Họ Tên:</dt>
+                        <dd class="col-sm-8">@Model.HoTen</dd>
+
+                        <dt class="col-sm-4 fw-bold">Hình Ảnh:</dt>
+                        <dd class="col-sm-8">
+                            <img src="~/@Model.Hinh" alt="Ảnh sinh viên" class="img-thumbnail shadow" style="width: 180px; height: auto; object-fit: cover;" />
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="card-footer text-center">
+            <form asp-action="Delete" method="post" class="d-inline-block">
+                <input type="hidden" name="id" value="@Model.MaSV" />
+                <button type="submit" class="btn btn-danger px-4 me-2">
+                    <i class="bi bi-trash"></i> Xác Nhận Xóa
+                </button>
+            </form>
+            <a asp-action="Index" class="btn btn-secondary px-4">
+                <i class="bi bi-arrow-left-circle"></i> Hủy
+            </a>
+        </div>
+    </div>
+</div>

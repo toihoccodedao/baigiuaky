@@ -1,0 +1,55 @@
+﻿@model WebApplication4.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Chi Tiết Sinh Viên";
+}
+
+<div class="container mt-5">
+    <!-- Card Layout -->
+    <div class="card shadow-lg border-0 rounded-4">
+        <!-- Header -->
+        <div class="card-header bg-primary text-white text-center py-3">
+            <h3 class="mb-0">Thông Tin Chi Tiết Sinh Viên</h3>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <!-- Thông tin sinh viên -->
+                    <dl class="row">
+                        <dt class="col-sm-4 text-end fw-bold">Mã Sinh Viên:</dt>
+                        <dd class="col-sm-8">@Model.MaSV</dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">Họ Tên:</dt>
+                        <dd class="col-sm-8">@Model.HoTen</dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">Giới Tính:</dt>
+                        <dd class="col-sm-8">@Model.GioiTinh</dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">Ngày Sinh:</dt>
+                        <dd class="col-sm-8">@Model.NgaySinh.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">Ngành Học:</dt>
+                        <dd class="col-sm-8">@Model.NganhHoc?.TenNganh</dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">Hình Ảnh:</dt>
+                        <dd class="col-sm-8">
+                            <img src="~/@Model.Hinh" alt="Ảnh sinh viên" class="img-thumbnail shadow-sm" style="width: 200px; height: auto; object-fit: cover;" />
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer với nút điều hướng -->
+        <div class="card-footer text-center">
+            <a asp-action="Edit" asp-route-id="@Model.MaSV" class="btn btn-warning btn-lg px-4 me-2">
+                <i class="bi bi-pencil-square"></i> Chỉnh Sửa
+            </a>
+            <a asp-action="Index" class="btn btn-secondary btn-lg px-4">
+                <i class="bi bi-arrow-left-circle"></i> Quay Lại
+            </a>
+        </div>
+    </div>
+</div>

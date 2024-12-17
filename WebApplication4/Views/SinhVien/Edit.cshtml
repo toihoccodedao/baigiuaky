@@ -1,0 +1,89 @@
+﻿@model WebApplication4.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa Sinh Viên";
+}
+
+<div class="container mt-5">
+    <!-- Card Layout -->
+    <div class="card shadow-lg border-0 rounded-4">
+        <!-- Header -->
+        <div class="card-header bg-warning text-dark text-center py-3">
+            <h3 class="mb-0">Chỉnh Sửa Thông Tin Sinh Viên</h3>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body">
+            <form asp-action="Edit" enctype="multipart/form-data" class="needs-validation" novalidate>
+                @Html.HiddenFor(model => model.MaSV)
+
+                <!-- Họ Tên -->
+                <div class="row mb-3">
+                    <label asp-for="HoTen" class="col-sm-3 col-form-label fw-bold text-end">Họ Tên</label>
+                    <div class="col-sm-9">
+                        <input asp-for="HoTen" class="form-control" placeholder="Nhập họ tên" required />
+                        <span asp-validation-for="HoTen" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- Giới Tính -->
+                <div class="row mb-3">
+                    <label asp-for="GioiTinh" class="col-sm-3 col-form-label fw-bold text-end">Giới Tính</label>
+                    <div class="col-sm-9">
+                        <select asp-for="GioiTinh" class="form-select" required>
+                            <option value="">-- Chọn giới tính --</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                        <span asp-validation-for="GioiTinh" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- Ngày Sinh -->
+                <div class="row mb-3">
+                    <label asp-for="NgaySinh" class="col-sm-3 col-form-label fw-bold text-end">Ngày Sinh</label>
+                    <div class="col-sm-9">
+                        <input asp-for="NgaySinh" type="date" class="form-control" required />
+                        <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- Ngành Học -->
+                <div class="row mb-3">
+                    <label for="MaNganh" class="col-sm-3 col-form-label fw-bold text-end">Ngành Học</label>
+                    <div class="col-sm-9">
+                        <select asp-for="MaNganh" asp-items="ViewBag.NganhHocList" class="form-select" required>
+                            <option value="">-- Chọn ngành học --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Ảnh Hiện Tại -->
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label fw-bold text-end">Ảnh Hiện Tại</label>
+                    <div class="col-sm-9">
+                        <img src="~/@Model.Hinh" alt="Ảnh sinh viên" class="img-thumbnail shadow-sm" style="width: 120px; height: auto; object-fit: cover;" />
+                    </div>
+                </div>
+
+                <!-- Chọn Ảnh Mới -->
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label fw-bold text-end">Chọn Ảnh Mới</label>
+                    <div class="col-sm-9">
+                        <input type="file" name="Hinh" class="form-control" accept="image/*" />
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success px-4 me-2">
+                        <i class="bi bi-save"></i> Lưu
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary px-4">
+                        <i class="bi bi-arrow-left-circle"></i> Hủy
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
